@@ -28,4 +28,4 @@ The built .apk is `output-apk/dnac-android-app.apk`
   ```
 
 ###### *continue coding your business logic and build your .apk*
-    //refer to `sample-app/DNAC-Android-SDK`
+//refer to sample-app/DNAC-Android-SDK
