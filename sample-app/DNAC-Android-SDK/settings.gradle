@@ -1,0 +1,1 @@
+include ':app', ':android-v4-min-stub-updated-debug-1.0.0', ':updated-android-bindings-debug-1.0.0'
