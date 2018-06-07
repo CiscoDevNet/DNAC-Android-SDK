@@ -1,6 +1,8 @@
 ### Sample android app created with DNAC android SDK
 This app showcases the utility of android SDK (packaged and published as .aar) for building android apps
 
+
+---
 ### Workflow covered by the sample app
 The app allows user to login into a DNAC using it's *ip-address* and his/her *user-name* and *password*. Once the user is logged-in, (s)he can:
   * know the authentication token being used,
@@ -9,6 +11,8 @@ The app allows user to login into a DNAC using it's *ip-address* and his/her *us
 
 The built .apk is `output-apk/dnac-android-app.apk`
 
+
+---
 ### Using SDK to create your own app
 ###### Requirements:
   * Android studio
