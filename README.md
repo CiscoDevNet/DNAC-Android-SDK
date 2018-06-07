@@ -27,5 +27,5 @@ The built .apk is `output-apk/dnac-android-app.apk`
       implementation project('<name of the .aar imported>')
   ```
 
-###### *continue coding your business logic and build your .apk*
-//refer to sample-app/DNAC-Android-SDK
+###### *continue coding your business logic and build your .apk* (reference code under sample-app/DNAC-Android-SDK)
+
