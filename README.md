@@ -1,7 +1,7 @@
 ### Sample android app created with DNAC android SDK
 This app showcases the utility of android SDK (packaged and published as .aar) for building android apps
 
-### Workflow covered by the app
+### Workflow covered by the sample app
 The app allows user to login into a DNAC using it's *ip-address* and his/her *user-name* and *password*. Once the user is logged-in, (s)he can:
   * know the authentication token being used,
   * get the count of managed network-devices and
@@ -10,11 +10,11 @@ The app allows user to login into a DNAC using it's *ip-address* and his/her *us
 The built .apk is `output-apk/dnac-android-app.apk`
 
 ### Using SDK to create your own app
-###### Requirements 
+###### Requirements:
   * Android studio
   * SDK file (available as `input-aar/updated-android-bindings-debug-1.0.0.aar`)
 
-###### Configuration steps
+###### Configuration steps:
   * Start a new android project (we have used API version 21)
   * Choose **Empty Activity**
   * Import the .aar (*File > New > New Module >  Import .jar/.aar package*)
