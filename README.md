@@ -1,4 +1,3 @@
-### Sample android app created with DNAC android SDK
 This app showcases the utility of android SDK (packaged and published as .aar) for building android apps
 
 
