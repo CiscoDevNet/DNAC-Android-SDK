@@ -39,4 +39,6 @@ The built .apk is `output-apk/dnac-android-app.apk`
  * Load the .apk onto android device and install or
  * CLI:
     > adb install output-apk/dnac-android-app.apk
+    
+**Note:** If there are issues with login, try restarting the app with *SSL Verification* turned **OFF**
  
