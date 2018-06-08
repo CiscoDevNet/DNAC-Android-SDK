@@ -59,8 +59,7 @@ public class DeviceCountActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_count);
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
+
         //Network Device Count
         deviceCountButton = (Button) findViewById(R.id.NetworkDeviceCount);
         mTextView = (TextView) findViewById(R.id.DeviceCount);
@@ -75,12 +74,7 @@ public class DeviceCountActivity extends Activity {
         listView = (ListView) findViewById(R.id.listView);
 
     }
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivity(myIntent);
-        return true;
 
-    }
     @Override
     protected void onStart() {
         super.onStart();

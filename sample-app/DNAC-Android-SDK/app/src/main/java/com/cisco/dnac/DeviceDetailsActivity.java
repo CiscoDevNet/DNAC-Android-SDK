@@ -44,8 +44,6 @@ public class DeviceDetailsActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.device_list);
         mTextView = (TextView) findViewById(R.id.DeviceDetails);
@@ -62,13 +60,6 @@ public class DeviceDetailsActivity extends Activity {
         deviceDetails() ;
 
     }
-
-    public boolean onOptionsItemSelected(MenuItem item) {
-        finish();
-        return true;
-
-    }
-
     /* THREAD MECHANISM for fetching the device details */
 
     public void deviceDetails(){
