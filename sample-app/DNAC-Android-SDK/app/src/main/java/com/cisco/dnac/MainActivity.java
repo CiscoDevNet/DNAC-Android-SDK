@@ -170,7 +170,7 @@ public class MainActivity extends Activity {
                                 Toast.makeText(getApplicationContext(), "Check your connection", Toast.LENGTH_SHORT).show();
                             } else {
                                 progressBar.dismiss();
-                                Toast.makeText(getApplicationContext(), "SSl verification is true please turn it off", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "SSl verification failed", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
