@@ -18,7 +18,7 @@ The built .apk is `output-apk/dnac-android-app.apk`
   * SDK file (available as `input-aar/updated-android-bindings-debug-1.0.0.aar`)
 
 ###### Configuration steps:
-  * Start a new android project (we have used API version 21)
+  * Start a new android project (`sample-app` is built on **API version 21**)
   * Choose **Empty Activity**
   * Import the .aar (*File > New > New Module >  Import .jar/.aar package*)
   * Update Project Settings to include .aar in the depedencies (*File > Project Structure > [Select AppModule ] > Dependency tab > [+] .aar module*)
