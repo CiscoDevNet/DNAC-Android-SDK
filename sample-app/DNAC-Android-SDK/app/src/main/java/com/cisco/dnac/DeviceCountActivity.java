@@ -15,6 +15,8 @@
  * or implied.
  */
 
+ /* THIS FILE IS RESPONSIBLE FOR LIST SCREEN THAT APPEARS AFTER LOGIN PAGE */
+
 package com.cisco.dnac;
 
 import android.app.ActionBar;
@@ -74,9 +76,8 @@ public class DeviceCountActivity extends Activity {
 
     }
     public boolean onOptionsItemSelected(MenuItem item){
-        sslSetting.setChecked(true);
         Intent myIntent = new Intent(getApplicationContext(), MainActivity.class);
-        startActivityForResult(myIntent, 0);
+        startActivity(myIntent);
         return true;
 
     }
@@ -106,6 +107,10 @@ public class DeviceCountActivity extends Activity {
 
     }
 
+    /*
+    This method places a request for fetching the token response from DNAC
+     */
+
     public void AuthToken() {
         Thread AuthTokenThread = new Thread() {
             public void run() {
@@ -132,6 +137,11 @@ public class DeviceCountActivity extends Activity {
         };
         AuthTokenThread.start();
     }
+
+    /*
+    This method places a request to get the number of devices present at present in the DNAC Context
+     */
+
 
     public void DeviceCount() {
         Thread DeviceCountThread = new Thread() {
@@ -162,6 +172,9 @@ public class DeviceCountActivity extends Activity {
         DeviceCountThread.start();
     }
 
+    /*
+    This method places a request to retrieve the list of devices from DNAC
+     */
 
     public void DeviceList(){
         Thread DeviceListThread = new Thread() {
@@ -198,6 +211,11 @@ public class DeviceCountActivity extends Activity {
         DeviceListThread.start();
     }
 
+    /*
+    This method places a request to get the number of devices present at present in DNAC - This again requests
+    the method exposed by DnacAccessClass
+
+     */
 
     public class DeviceCount extends AsyncTask<Void, Void,Integer> {
         public Context mContext;
@@ -216,7 +234,10 @@ public class DeviceCountActivity extends Activity {
         }
     }
 
-
+    /*
+    This method places a request for fetching the token response from DNAC - This again requests
+    the method exposed by DnacAccessClass
+     */
     public class AuthToken extends AsyncTask<Void, Void, String> {
         public Context mContext;
 
@@ -234,6 +255,10 @@ public class DeviceCountActivity extends Activity {
         }
     }
 
+    /*
+    This method places a request to retrieve the list of devices from DNAC - his again requests
+    the method exposed by DnacAccessClass
+     */
     public class DeviceList extends AsyncTask<Void, Void, String[]> {
         public Context mContext;
 

@@ -15,6 +15,8 @@
  * or implied.
  */
 
+/* THIS FILE IS RESPONSIBLE FOR MAIN ACTIVITY */
+
 package com.cisco.dnac;
 
 import android.annotation.SuppressLint;
@@ -69,6 +71,7 @@ public class MainActivity extends Activity {
     public static Intent intent1;
     private String loginUrl = "/api/system/v1/identitymgmt/login";
     public static Switch sslSetting;
+    public static boolean sslSettingInfo = false;
 
 
     @Override
@@ -81,6 +84,19 @@ public class MainActivity extends Activity {
         password_t = (EditText) findViewById(R.id.editText2);
         ip_address = (EditText)findViewById(R.id.editText3);
         sslSetting = (Switch) findViewById(R.id.switch1);
+        sslSetting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(sslSetting.isChecked()) {
+                    Log.e(REQUEST_TAG,"sslsetting.isChecked is true");
+                    sslSettingInfo = true;
+                }
+                else {
+                    Log.e(REQUEST_TAG, "sslsetting.isChecked is false");
+                    sslSettingInfo = false;
+                }
+            }
+        });
 
 
     }
@@ -117,6 +133,10 @@ public class MainActivity extends Activity {
     }
 
     public void startParsingTask() {
+        Log.e(REQUEST_TAG,"sslSettingInfo "+sslSettingInfo);
+        //if(!sslSettingInfo){
+            handleSSLHandshake(!sslSettingInfo);
+        //}
         Thread LoginThreadResponse = new Thread() {
             public void run() {
                 Login LoginThread = new Login(getApplicationContext());
@@ -142,16 +162,16 @@ public class MainActivity extends Activity {
                                 progressBar.dismiss();
                                 intent1 = new Intent(MainActivity.this, DeviceCountActivity.class);
                                 startActivity(intent1);
-                            }
-                            if (loginresponse.equals("sslsettingtrue")) {
+                            } else if (loginresponse.equals("com.android.volley.AuthFailureError")) {
                                 progressBar.dismiss();
-                                Toast.makeText(getApplicationContext(), "SSl Setting is true please turn it off" , Toast.LENGTH_SHORT).show();
+                                Toast.makeText(getApplicationContext(), "Authentication failed", Toast.LENGTH_SHORT).show();
+                            } else if (loginresponse.equals("com.android.volley.TimeoutError")) {
+                                progressBar.dismiss();
+                                Toast.makeText(getApplicationContext(), "Check your connection", Toast.LENGTH_SHORT).show();
+                            } else {
+                                progressBar.dismiss();
+                                Toast.makeText(getApplicationContext(), "SSl verification is true please turn it off", Toast.LENGTH_SHORT).show();
                             }
-                        }
-                        else{
-                            Toast.makeText(getApplicationContext(), "Check your credentials" , Toast.LENGTH_SHORT).show();
-                            progressBar.dismiss();
-
                         }
                     }
                 });
@@ -159,6 +179,12 @@ public class MainActivity extends Activity {
         };
         LoginThreadResponse.start();
     }
+
+    /*
+
+    Login Thread - It is to handle login request that is made using Android Native API's - The response could be delayed
+    Hence it is handled in separate thread and not in main thread.
+     */
 
     private class Login extends AsyncTask<Void, Void, String> {
         private Context mContext;
@@ -169,9 +195,7 @@ public class MainActivity extends Activity {
 
         @Override
         protected String doInBackground(Void... params) {
-            if(!sslSetting.isChecked()) {
-                handleSSLHandshake();
-            }
+
 
             final RequestFuture<String> futureRequest = RequestFuture.newFuture();
             mQueue = RequestQueue.getInstance(mContext.getApplicationContext())
@@ -214,7 +238,7 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 Log.e(REQUEST_TAG,"Exception :"+e.getCause());
-                return "sslsettingtrue";
+                return e.getCause().toString();
             } catch (TimeoutException e) {
                 e.printStackTrace();
             }catch (Exception e){
@@ -231,7 +255,7 @@ public class MainActivity extends Activity {
      * Enables https connections
      */
     @SuppressLint("TrulyRandom")
-    public static void handleSSLHandshake() {
+    public static void handleSSLHandshake(final Boolean trust) {
         try {
             TrustManager[] trustAllCerts = new TrustManager[]{new X509TrustManager() {
                 public X509Certificate[] getAcceptedIssuers() {
@@ -253,7 +277,7 @@ public class MainActivity extends Activity {
             HttpsURLConnection.setDefaultHostnameVerifier(new HostnameVerifier() {
                 @Override
                 public boolean verify(String arg0, SSLSession arg1) {
-                    return true;
+                    return trust;
                 }
             });
         } catch (Exception ignored) {

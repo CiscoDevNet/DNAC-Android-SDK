@@ -33,6 +33,7 @@ import java.util.concurrent.TimeUnit;
 import static com.cisco.dnac.MainActivity.ip;
 import static com.cisco.dnac.MainActivity.rawCookies;
 
+/* THIS FILE IS RESPONSIBLE FOR DEVICE DETAILS SCREEN */
 
 public class DeviceDetailsActivity extends Activity {
     public static final String REQUEST_TAG = "DeviceDetailsActivity";
@@ -68,6 +69,8 @@ public class DeviceDetailsActivity extends Activity {
 
     }
 
+    /* THREAD MECHANISM for fetching the device details */
+
     public void deviceDetails(){
         Thread deviceDetailsThread = new Thread() {
             public void run() {
@@ -91,6 +94,8 @@ public class DeviceDetailsActivity extends Activity {
         deviceDetailsThread.start();
 
     }
+
+    /* This methods fetches the device details from DnacAccessClass method */
     public class DeviceDetails extends AsyncTask<Void, Void, String> {
         public Context mContext;
 

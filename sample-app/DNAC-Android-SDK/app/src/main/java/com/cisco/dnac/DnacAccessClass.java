@@ -31,6 +31,8 @@ import model.NetworkDeviceListResult;
 import model.NetworkDeviceListResultResponse;
 import api.MiscApi;
 
+/* THIS FILE IS RESPONSIBLE FOR ACCESSING THE ACTUAL METHODS IN INTERACTING WITH DNAC */
+
 public class DnacAccessClass {
 
     private String REQUEST_TAG ="DnacAccessClass";
@@ -111,6 +113,8 @@ public class DnacAccessClass {
             networkDeviceApi = new NetworkDeviceApi();
     }
 
+    /* SINGLETON INSTANCE FOR ACCESSING THE DNAC METHODS */
+
     public static DnacAccessClass getInstance() {
         if (instance == null) {
             synchronized(DnacAccessClass.class) {
@@ -122,6 +126,10 @@ public class DnacAccessClass {
         return instance;
 
     }
+
+    /* METHOD TO RETRIEVE THE COUNT FROM DNAC
+     * networkDeviceApi to be configured for Cookie and Dnac IP Address
+     * */
 
     public Integer getNetworkDeviceCount_() {
         Integer count = 0;
@@ -138,6 +146,10 @@ public class DnacAccessClass {
         return count;
     }
 
+    /* METHOD TO FETCH THE AUTH TOKEN FROM DNAC
+     *  miscApi to be configured for DnacIpAddress and Authorization
+     * */
+
     public String getAuthToken(){
         Log.e(REQUEST_TAG,"entering getAuthToken function ");
         String credentials = username+":"+password;
@@ -152,6 +164,10 @@ public class DnacAccessClass {
         return null;
     }
 
+    /* METHOD TO RETRIEVE THE NETWORK DEVICE LIST FROM DNAC
+     * networkDeviceApi to be configured for Cookie and Dnac IP Address
+     * */
+
     public List<NetworkDeviceListResultResponse> getNetworkDeviceAllResponse_(){
         Log.e(REQUEST_TAG,"entering getDeviceList function ");
         networkDeviceApi.setBasePath(DnacIPaddress);
@@ -163,6 +179,10 @@ public class DnacAccessClass {
         }
         return null;
     }
+
+    /* METHOD TO RETRIEVE THE SPECIFIC DEVICE DETAILS
+     * networkDeviceApi to be configured for Cookie and Dnac IP Address
+     * */
 
     public String[] getListViewButtonDetails(){
         String[] ButtonDetails =null;

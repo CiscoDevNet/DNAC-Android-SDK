@@ -13,6 +13,14 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:src="@drawable/cisco" />
+    <Switch
+        android:id="@+id/switch1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/editText1"
+        android:text="SSL Verification"
+        android:checked="false"/>
 
     <EditText
         android:id="@+id/editText1"
@@ -44,10 +52,9 @@
         android:id="@+id/button"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="196dp"
+        android:layout_below="@+id/editText3"
         android:background="@drawable/buttondesign"
+        android:layout_centerHorizontal="true"
         android:text="Login"
         android:textSize="20dp" />
 
@@ -57,20 +64,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:text="DNAC"
         android:textAllCaps="true"
         android:textColor="#049FD9"
         android:textSize="30dp" />
 
-    <Switch
-        android:id="@+id/switch1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="270dp"
-        android:text="SSL Setting"
-        android:checked="true"/>
+
 
 </RelativeLayout>
