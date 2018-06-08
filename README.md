@@ -14,7 +14,8 @@ The built .apk is `output-apk/dnac-android-app.apk`
 ---
 ### Using SDK to create your own app
 ###### Requirements:
-  * Android studio
+  * JDK-1.8
+  * Android studio (>= v3.1)
   * SDK file (available as `input-aar/updated-android-bindings-debug-1.0.0.aar`)
 
 ###### Configuration steps:
@@ -27,7 +28,7 @@ The built .apk is `output-apk/dnac-android-app.apk`
    ```gradle
       implementation 'com.android.volley:volley:1.1.0'
       implementation 'io.gsonfire:gson-fire:1.8.0'
-      implementation project('<name of the .aar imported>')
+      implementation project('updated-android-bindings-debug-1.0.0.aar')
   ```
 
 ###### *continue coding your business logic and build your .apk* (reference code under `sample-app/DNAC-Android-SDK`)
