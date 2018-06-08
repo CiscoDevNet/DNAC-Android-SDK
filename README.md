@@ -30,6 +30,7 @@ The built .apk is `output-apk/dnac-android-app.apk`
       implementation 'io.gsonfire:gson-fire:1.8.0'
       implementation project('updated-android-bindings-debug-1.0.0.aar')
   ```
-
+  * For building application, kindly refer to the sample application placed at /sample-app/DNAC-Android-SDK - Direction for use -> [AndroidStudio -> File -> New -> Open -> DNAC-Android-SDK]
+  * For quick reference of application usage, kindly install .apk placed at output-apk/dnac-android-app.apk - Direction for use -> [Go to Shell -> adb install dnac-android-app.apk] 
 ###### *continue coding your business logic and build your .apk* (reference code under `sample-app/DNAC-Android-SDK`)
 
