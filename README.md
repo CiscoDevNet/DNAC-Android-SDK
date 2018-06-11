@@ -1,4 +1,4 @@
-This app showcases the utility of android SDK (packaged and published as .aar) for building android apps
+This is an intent driven android app to query the list and details of the managed network devices for a given DNAC
 
 
 ---
